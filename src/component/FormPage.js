@@ -31,7 +31,7 @@ export default function FormPage() {
   //post request
   const postNewOrderInfo = (newOrderInfo) => {
     axios
-      .post("https://reqres.in/", newOrderInfo)
+      .post("https://reqres.in/api/pizza", newOrderInfo)
       .then((res) => {
         setOrderInfo(res.data);
         setFormValues(initialFormValues);
@@ -52,11 +52,12 @@ export default function FormPage() {
         setFormErrors({
           ...formErrors,
           [name]: "",
-        }).catch((error) => {
-          setFormErrors({
-            ...formErrors,
-            [name]: error.errors[0],
-          });
+        });
+      })
+      .catch((error) => {
+        setFormErrors({
+          ...formErrors,
+          [name]: error.errors[0],
         });
       });
 
@@ -76,7 +77,6 @@ export default function FormPage() {
         (toppings) => formValues[toppings]
       ),
     };
-    // 🔥 STEP 8- POST NEW FRIEND USING HELPER
     postNewOrderInfo(newOrderInfo);
   };
 
@@ -90,7 +90,7 @@ export default function FormPage() {
       setButtonDisabled(!valid);
     });
   }, [formValues]);
-  //helper functions
+
   return (
     <div>
       <h1>Lambda Eats</h1>

@@ -23,7 +23,9 @@ export default function PizzaForm(props) {
         <h2>Order Form</h2>
 
         {/* 🔥 DISABLE THE BUTTON */}
-        <button disabled={disabled}>Add to Order</button>
+        <button name="orderbutton" disabled={disabled}>
+          Add to Order
+        </button>
 
         <div className="errors">
           {/* 🔥 RENDER THE VALIDATION ERRORS HERE */}
@@ -68,7 +70,7 @@ export default function PizzaForm(props) {
           Pepperoni
           <input
             type="checkbox"
-            name="hiking"
+            name="pepperoni"
             checked={values.pepperoni}
             onChange={onChange}
           />
